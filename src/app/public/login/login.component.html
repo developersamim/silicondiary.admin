@@ -1,0 +1,62 @@
+<div class="container paddingTop">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-login">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-6">
+                <a href="#" class="active" id="login-form-link">Login</a>
+              </div>
+              <div class="col-xs-6">
+                <a routerLink="/register" id="register-form-link">Register</a>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <form name="login-form" #f="ngForm" (ngSubmit)="f.form.valid && login()" novalidate>
+                  <div *ngIf="errorMessage" [ngClass]="'alert alert-danger'"> {{errorMessage}} </div>
+                  <div class="form-group">
+                    <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" tabindex="1" class="form-control" placeholder="Username" required>
+                    <div *ngIf="f.submitted && username.invalid" class="alert alert-danger">
+                      <div *ngIf="username.errors.required">Username is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" tabindex="2" class="form-control" placeholder="Password" required>
+                    <div *ngIf="f.submitted && password.invalid" class="alert alert-danger">
+                      <div *ngIf="password.errors.required">Password is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group text-center">
+                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                    <label for="remember"> Remember Me</label>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <button type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                          Log In <i *ngIf="loading" class="fa fa-spinner fa-spin fa-1x fa-fw"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="text-center">
+                          <a href="" tabindex="5" class="forgot-password">Forgot Password?</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
