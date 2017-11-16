@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  //API_URL: 'http://silicondiary-webapi.azurewebsites.net/api/'
 };

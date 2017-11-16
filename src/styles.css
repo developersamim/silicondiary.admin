@@ -114,3 +114,12 @@ body {
       border-radius: 50%;
     }
 /* end dashboard */
+.page-header-custom{
+  overflow: hidden;
+}
+
+.page-header .links{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding-right: 50px;
+}
