@@ -21,7 +21,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr *ngFor="let category of categories">
+                    <td></td>
+                    <td>{{category.name}}</td>
+                    <td>{{category.parent?.name}}</td>
+                    <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
+                </tr>
+                <!-- <tr>
                     <td>1,001</td>
                     <td>Lorem</td>
                     <td>ipsum</td>
@@ -34,7 +40,7 @@
                     <td>amet</td>
                     <td>consectetur</td>
                     <td>elit</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>

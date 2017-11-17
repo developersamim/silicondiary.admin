@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoryService} from './category.service';
 import{ToastsManager} from 'ng2-toastr/ng2-toastr';
+import { Category } from './category';
 
 @Component({
     selector: 'dashboard-category',
@@ -8,14 +9,25 @@ import{ToastsManager} from 'ng2-toastr/ng2-toastr';
     //providers: [CategoryService]
 })
 
-export class CategoryComponent{
+export class CategoryComponent implements OnInit{
 
     IsAdd:boolean = false;
     IsList:boolean = true;
     header:string = "Category";
     model: any = {};
-    constructor(private cs:CategoryService, private toastr: ToastsManager){
+    categories: Category[];
+    constructor(private categoryService:CategoryService, private toastr: ToastsManager){
+        
+    }
+    ngOnInit(){
+        this.getAllCategories();
+    }
+    getAllCategories(){
+        this.categoryService.findAll().subscribe((categorises:Category[]) => {
+            this.categories = categorises;
+        }
 
+        )
     }
     add(){
         
