@@ -1,0 +1,27 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="page-header page-header-custom">
+        <h1 class="pull-left">Add Category</h1>
+
+    </div>
+
+    <!-- start add category -->
+    <form #f="ngForm" (ngSubmit)="f.form.valid && addCategory()" novalidate>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" [(ngModel)]="model.name" #name="ngModel" required class="form-control" aria-describedby="emailHelp" placeholder="Enter Category Name">
+            <div *ngIf="f.submitted && name.invalid" class="alert alert-danger">
+                <div *ngIf="name.errors.required">Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="parent">Parent</label>
+            <select class="form-control" name="parent" id="parent" [(ngModel)]="model.parent" #parent="ngModel">
+                <option>Select Parent</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>                
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" (click)="goBack()" class="btn">Back</button>
+    </form>
+    <!-- end add category -->
+</div>

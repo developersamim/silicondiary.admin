@@ -1,0 +1,13 @@
+<div *ngIf="category" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="page-header page-header-custom">
+        <h1 class="pull-left">Update Category</h1>
+    </div>
+    <form (ngSubmit)="updateCategory()">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" [(ngModel)]="category.name"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button (click)="goBack()" type="button" class="btn">Back</button>
+    </form>
+</div>

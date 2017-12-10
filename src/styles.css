@@ -123,3 +123,17 @@ body {
   margin-bottom: 10px;
   padding-right: 50px;
 }
+
+.customLink{
+  cursor: pointer;
+}
+
+.colorRed{
+  color: red;
+}
+i.paddingLeft{
+  padding-left: 10px;
+}
+i.cross{
+  cursor: pointer;
+}

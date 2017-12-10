@@ -19,6 +19,13 @@ import{FooterComponent} from './secure/shared/footer/footer.component';
 import{SidebarComponent} from './secure/shared/sidebar/sidebar.component';
 import{CategoryComponent} from './secure/category/category.component';
 import{CategoryService} from './secure/category/category.service';
+import{CategoryUpdateComponent} from './secure/category/categoryupdate.component';
+import{CategoryAddComponent} from './secure/category/category-add.component';
+import{MessageService} from './messages/message.service';
+import{MessagesComponent} from './messages/message.component';
+
+//Import module from ng-boostrap
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 /**
  * Route constant 
  */
@@ -40,17 +47,22 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    CategoryComponent
+    CategoryComponent,
+    CategoryUpdateComponent,
+    CategoryAddComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    FormsModule,
+    
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastModule.forRoot()
+    ToastModule.forRoot(),
+    FormsModule
+    //NgbModule.forRoot()
   ],
-  providers: [CategoryService],
+  providers: [CategoryService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

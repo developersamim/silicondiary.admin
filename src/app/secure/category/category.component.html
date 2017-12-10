@@ -1,62 +1,35 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     
     <div class="page-header page-header-custom">
-        <h1 class="pull-left">{{header}}</h1>
+        <h1 class="pull-left">Category</h1>
         <div class="links pull-right">
-            <button type="button" *ngIf="!IsAdd" class="btn btn-info btn-xs" (click)="add()">Add</button>
-            <button type="button" *ngIf="!IsList" class="btn btn-info btn-xs" (click)="list()">List</button>
+            <button type="button" routerLink="/category-add" class="btn btn-info btn-xs">Add</button>
         </div>
     </div>
     
-
-    <!--<h2 class="sub-header">Category</h2>-->
-    <div class="table-responsive" *ngIf="IsList">
+    <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
                     <th>Parent</th>
+                    <th>Children</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let category of categories">
-                    <td></td>
-                    <td>{{category.name}}</td>
-                    <td>{{category.parent?.name}}</td>
-                    <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
-                </tr>
-                <!-- <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
+                <tr *ngFor="let category of categories; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{jsUcfirst(category.name)}}</td>
+                    <td>{{jsUcfirst(category.parent?.name)}}</td>
+                    <td>{{category.nameOfAllChildren}}</td>
                     <td>
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                        <i [routerLink]="['/categoryupdate', category.id]" class="fa fa-pencil customLink" aria-hidden="true"></i> 
+                        <i class="fa fa-times colorRed paddingLeft cross" aria-hidden="true"></i>
                     </td>
                 </tr>
-                <tr>
-                    <td>1,002</td>
-                    <td>amet</td>
-                    <td>consectetur</td>
-                    <td>elit</td>
-                </tr> -->
             </tbody>
         </table>
     </div>
-
-    <!-- start add category -->
-    <form *ngIf="IsAdd" #f="ngForm" (ngSubmit)="f.form.valid && addCategory()" novalidate>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Name</label>
-            <input type="text" name="name" [(ngModel)]="model.name" #name="ngModel" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Category Name">
-            <div *ngIf="f.submitted && name.invalid" class="alert alert-danger">
-                <div *ngIf="name.errors.required">Name is required</div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <!-- end add category -->
-
-
 </div>
